@@ -1,0 +1,33 @@
+#!/bin/bash
+
+archivo="/sys/devices/platform/msi-ec/shift_mode"
+
+# Lee el valor actual del archivo
+estado_actual=$(cat "$archivo")
+
+# Cambia el estado entre 'silent', 'auto' y 'advanced'
+case $estado_actual in
+    'eco')
+        nuevo_estado='comfort'
+        ;;
+    'comfort')
+        nuevo_estado='sport'
+        ;;
+    'sport')
+        nuevo_estado='eco'
+        ;;
+    *)
+        notify-send "Error: Estado desconocido ($estado_actual)"
+        exit 1
+        ;;
+esac
+
+# Escribe el nuevo estado en el archivo
+if pkexec sh -c "echo '$nuevo_estado' > $archivo"; then
+    # La ejecución del comando sudo fue exitosa
+    notify-send "Operación completada" "Se ha cambiado el modo a $nuevo_estado"
+else
+    # La ejecución del comando sudo falló
+    notify-send "Error" "No se proporcionaron los permisos necesarios para cambiar el modo"
+fi
+
