@@ -9,12 +9,15 @@ estado_actual=$(cat "$archivo")
 case $estado_actual in
     'eco')
         nuevo_estado='comfort'
+	nuevo_estado_gnome='balanced'
         ;;
     'comfort')
         nuevo_estado='sport'
+	nuevo_estado_gnome='performance'
         ;;
     'sport')
         nuevo_estado='eco'
+	nuevo_estado_gnome='power-saver'
         ;;
     *)
         notify-send "Error: Estado desconocido ($estado_actual)"
@@ -24,7 +27,8 @@ esac
 
 # Escribe el nuevo estado en el archivo
 if pkexec sh -c "echo '$nuevo_estado' > $archivo"; then
-    # La ejecución del comando sudo fue exitosa
+    powerprofilesctl set $nuevo_estado_gnome
+# La ejecución del comando sudo fue exitosa
     notify-send "Operación completada" "Se ha cambiado el modo a $nuevo_estado"
 else
     # La ejecución del comando sudo falló
