@@ -9,11 +9,15 @@ Set of parameters and scripts to customize ubuntu for msi-modern-14 c7m
 
 ## MSI-EC installation
 
-In Ubuntu 23.10, I couldn't install with the command `make`, so I installed dkms, and used the parameter `make dkms-install`, after that, I could continue with the installation.
+In Ubuntu 23.10, install with dkms.
+
+sudo make dkms-install
+
+sudo modprobe msi-ec
 
 ## Battery energy-mode
 
-Sometimes it has happened to me that the laptop doesn't charge up to **100%**, and when I check its maximum capacity, it's at **80%**. Therefore, the battery optimizer has activated the **medium** setting by himself (bug?). 
+Sometimes it has happened to me that the laptop doesn't charge up to **100%**, and when I check its maximum capacity, it's at **80%**. Therefore, the battery optimizer has activated the **medium** setting by himself (bug?).
 
 To fix it:
 
