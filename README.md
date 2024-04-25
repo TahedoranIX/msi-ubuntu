@@ -23,7 +23,11 @@ In Ubuntu 23.10, install with dkms. Not compatible (23/04/24) with new Firmware 
 
 sudo make dkms-install
 
-sudo modprobe msi-ec
+reboot the system
+
+### Workaround for mute key LED
+
+Follow this link: [link](https://askubuntu.com/questions/125367/enabling-mic-mute-button-and-light-on-lenovo-thinkpads)
 
 ## Battery energy-mode
 
