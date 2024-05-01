@@ -19,15 +19,27 @@ Update grub : `update-grub`
 
 ## MSI-EC installation
 
-In Ubuntu 23.10, install with dkms. Not compatible (23/04/24) with new Firmware 14JKEMS1.300
+In Ubuntu 23.10, install with dkms. Not compatible (23/04/24) with new EC Firmware 14JKEMS1.300
 
+```bash
 sudo make dkms-install
+```
 
 reboot the system
 
 ### Workaround for mute key LED
 
 Follow this link: [link](https://askubuntu.com/questions/125367/enabling-mic-mute-button-and-light-on-lenovo-thinkpads)
+
+And use the scripts provided in scripts directory
+
+## GNOME extensions
+
+[Gestures](https://github.com/jamespo/gnome-gesture-improvements/releases/tag/gnome46)
+
+
+## Customization
+
 
 ## Battery energy-mode
 
