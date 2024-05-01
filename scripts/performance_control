@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#use the shortcut as: pkexec /..../performance_control
 archivo="/sys/devices/platform/msi-ec/shift_mode"
 
 # Lee el valor actual del archivo
@@ -26,12 +26,5 @@ case $estado_actual in
 esac
 
 # Escribe el nuevo estado en el archivo
-if pkexec sh -c "echo '$nuevo_estado' > $archivo"; then
-    powerprofilesctl set $nuevo_estado_gnome
-# La ejecución del comando sudo fue exitosa
-    notify-send "Operación completada" "Se ha cambiado el modo a $nuevo_estado"
-else
-    # La ejecución del comando sudo falló
-    notify-send "Error" "No se proporcionaron los permisos necesarios para cambiar el modo"
-fi
-
+echo $nuevo_estado > $archivo
+powerprofilesctl set $nuevo_estado_gnome
