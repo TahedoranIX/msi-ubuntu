@@ -1,34 +1,53 @@
 #!/bin/bash
 #use the shortcut as: pkexec /..../performance_control
-archivo="/sys/devices/platform/msi-ec/shift_mode"
-
+shift_mode_file="/sys/devices/platform/msi-ec/shift_mode"
+backlight_file="/sys/devices/platform/msi-ec/leds/msiacpi::kbd_backlight/brightness"
+actual_bckl=$(cat $backlight_file)
 # Lee el valor actual del archivo
-estado_actual=$(cat "$archivo")
+estado_actual=$(cat "$shift_mode_file")
 
 # Cambia el estado entre 'silent', 'auto' y 'advanced'
 case $estado_actual in
     'eco')
         nuevo_estado='comfort'
 	    nuevo_estado_gnome='balanced'
-        notify-send "Modo de energía: Equilibrado"
+        #notify-send "Modo de energía: Equilibrado"
+        for brightness in 0 1 2; do
+            echo $brightness > $backlight_file
+            sleep 0.25
+        done
+        sleep 0.5
+        echo $actual_bckl > $backlight_file            
         ;;
     'comfort')
         nuevo_estado='sport'
 	    nuevo_estado_gnome='performance'
-        notify-send "Modo de energía: Rendimiento"
+        #notify-send "Modo de energía: Rendimiento"
+        for brightness in 0 1 2 3; do
+            echo $brightness > $backlight_file
+            sleep 0.25
+        done
+        sleep 0.5
+        echo $actual_bckl > $backlight_file        
         ;;
     'sport')
         nuevo_estado='eco'
 	    nuevo_estado_gnome='power-saver'
-        notify-send "Modo de energía: Ahorro de Energía"
+        #notify-send "Modo de energía: Ahorro de Energía"
+        for brightness in 0 1; do
+            echo $brightness > $backlight_file
+            sleep 0.25
+        done
+        sleep 0.5
+        echo $actual_bckl > $backlight_file
         ;;
     *)
-        notify-send "Error: Estado desconocido ($estado_actual)"
+        #notify-send "Error: Estado desconocido ($estado_actual)"
         exit 1
         ;;
 esac
 
 # Escribe el nuevo estado en el archivo
-echo $nuevo_estado > $archivo
+echo $nuevo_estado > $shift_mode_file
 
 powerprofilesctl set $nuevo_estado_gnome
