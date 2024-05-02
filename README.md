@@ -19,7 +19,7 @@ Update grub : `update-grub`
 
 ## MSI-EC installation
 
-In Ubuntu 23.10, install with dkms. Not compatible (23/04/24) with new EC Firmware 14JKEMS1.300
+In Ubuntu 23.10-24.04, install with dkms. Not compatible (23/04/24) with new EC Firmware 14JKEMS1.300
 
 ```bash
 sudo make dkms-install
@@ -37,9 +37,7 @@ And use the scripts provided in scripts directory
 
 [Gestures](https://github.com/jamespo/gnome-gesture-improvements/releases/tag/gnome46)
 
-
 ## Customization
-
 
 ## Battery energy-mode
 
@@ -56,4 +54,3 @@ To fix it:
 ## Scripts
 
 * performance_control: Change between different power modes (msi key)
-* webcam_control: Enable/Disable camera (webcam key)
