@@ -1,2 +1,2 @@
-event=button/mute.*
+event=button/volumeup.*
 action=/etc/acpi/msi-mute.sh
