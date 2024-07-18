@@ -45,11 +45,13 @@ Sometimes it has happened to me that the laptop doesn't charge up to **100%**, a
 
 To fix it:
 
-1. `echo 'medium' > battery_mode`
-2. Reboot
-3. `echo 'max' > battery_mode`
-4. Reboot
-5. Charge it.
+1. Don't connect the AC.
+2. `echo 'medium' > battery_mode`
+3. Reboot
+4. `echo 'max' > battery_mode`
+5. Reboot
+6. Power Off
+7. Charge it.
 
 ## Scripts
 
