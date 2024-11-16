@@ -23,9 +23,19 @@ In Ubuntu 23.10-24.04, install with dkms. Not compatible (23/04/24) with new EC 
 
 ```bash
 sudo make dkms-install
+reboot
 ```
 
-reboot the system
+### Troubleshooting
+
+If you updated the EC/BIOS, msi-ec may not support yet that version, add your EC version to `msi-ec.c`
+
+If `sudo modprobe msi-ec` gives a key error, you need to generate a new MOK. Thanks [Vincent](https://vcheng.org/2023/01/22/ubuntu-linux-secure-boot-dkms/)
+
+```
+sudo update-secureboot-policy --new-key
+sudo mokutil --import /var/lib/shim-signed/mok/MOK.der
+```
 
 ### Workaround for mute key LED
 
