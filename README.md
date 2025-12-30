@@ -6,6 +6,7 @@ Set of parameters and scripts to customize ubuntu for msi-modern-14 c7m
 
 * [msi-ec](https://github.com/BeardOverflow/msi-ec)
 * [Random brightness fix](https://askubuntu.com/a/1487963)
+* [Auto switch light/dark mode GNOME Ubuntu](https://www.technowizardry.net/2024/06/auto-switch-between-light-and-dark-mode-on-gnome/)
 
 ## Hide boot messages
 
@@ -62,6 +63,10 @@ To fix it:
 5. Reboot
 6. Power Off
 7. Charge it.
+
+> ANOTHER WORKAROUND!
+
+Reset the EC (press the back EC button for 30 seconds), let the laptop charge until the charging led goes off.
 
 ## Scripts
 
