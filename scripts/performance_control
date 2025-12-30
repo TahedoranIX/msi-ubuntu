@@ -20,7 +20,7 @@ case $estado_actual in
         echo $actual_bckl > $backlight_file            
         ;;
     'comfort')
-        nuevo_estado='sport'
+        nuevo_estado='turbo'
 	    nuevo_estado_gnome='performance'
         #notify-send "Modo de energía: Rendimiento"
         for brightness in 0 1 2 3; do
@@ -30,7 +30,7 @@ case $estado_actual in
         sleep 0.5
         echo $actual_bckl > $backlight_file        
         ;;
-    'sport')
+    'turbo')
         nuevo_estado='eco'
 	    nuevo_estado_gnome='power-saver'
         #notify-send "Modo de energía: Ahorro de Energía"
